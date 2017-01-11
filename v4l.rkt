@@ -23,6 +23,7 @@
 (define (match-port method body headers)
   (match method
     ["GET" (lambda (url) (url:get-pure-port url headers))]
+    ["HEAD" (lambda (url) (url:head-pure-port url headers))]
     ["POST" (lambda (url) (url:post-pure-port url body headers))]
     ["PUT" (lambda (url) (url:put-pure-port url body headers))]
     ["DELETE" (lambda (url) (url:delete-pure-port url headers))]))
@@ -45,6 +46,11 @@
    [("-m" "--method") method
     "HTTP method to use in request"
     (parameter-method method)]
+
+   #:once-each
+   [("-d" "--data") body
+    "HTTP body to send in request"
+    (parameter-body (string->bytes/utf-8 body))]
 
    #:multi
    [("-H" "--header") header
