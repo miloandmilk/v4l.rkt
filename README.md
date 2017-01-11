@@ -7,8 +7,12 @@ endpoint completion.
 
 * Install [Racket v6.7](https://download.racket-lang.org/).
 * Add v4l.rkt to your PATH
-* Add 'source ./completion.bash' to your ~/.profile
 * Add your personal access token to ~/.linode.token
+
+For shell completion:
+* Use bash or zsh
+* Install jq
+* Add 'source ./completion.bash' to your ~/.profile
 
 ## Example:
 
